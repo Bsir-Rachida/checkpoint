@@ -5,7 +5,7 @@
 
 body {
 margin: 0;
-background-color: $light;
+background-color:$light;
 
 }
 
@@ -14,8 +14,13 @@ background-color: $light;
     font-family:$font-family;
     color: $dark;
     font-weight: bold;
+    text-decoration: none;
+    border-bottom: transparent solid 2px;
+    padding-bottom: 5px;
 
     &:hover {
-        color: $secondary;
+        color: $primary;
+       
+        border-bottom: $primary solid 2px;
     }
 }
