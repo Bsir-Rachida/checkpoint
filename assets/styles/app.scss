@@ -1,0 +1,21 @@
+@import "variables.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "home.scss";
+@import "project.scss";
+
+body {
+margin: 0;
+background-color: $light;
+
+}
+
+
+.navbar-nav .nav-link {
+    font-family:$font-family;
+    color: $dark;
+    font-weight: bold;
+
+    &:hover {
+        color: $secondary;
+    }
+}
