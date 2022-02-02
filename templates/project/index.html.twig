@@ -7,6 +7,19 @@
 <div class="container home">
 <h1 class= "project text-center mt-4"> MES  REALISATIONS  </h1>
 <hr class="ms-5 w-80">
+<div class="row">
+		{% for project in projects %}
+		<div class="col-6 mt-4">
+			<a href="">
+              <figure class="figure">
+				<img src="{{ vich_uploader_asset(project) }}" class="figure-img img-fluid rounded ps-5 mt-2 card-project "
+					alt="{{ project.name}}" />
+                    
+                    </figure>
+			</a>
+		</div>
+		{% endfor %}
+
 </div>
 
 {% endblock %}
