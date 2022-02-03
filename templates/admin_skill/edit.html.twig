@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la compétence{% endblock %}
+
+{% block body %}
+<main class="container">
+    <h1>Modifier la compétence</h1>
+
+    {{ include('admin_skill/_form.html.twig') }}
+    
+
+    
+        <a href="{{ path('admin_skill_index') }}" class="btn btn-outline-dark mb-5 align-self-end">Retour</a>
+
+    <a href="{{ path('admin_skill_edit', {'id': skill.id})}}" class="btn btn-primary mb-5">Modifier</a>
+
+
+  
+    </main>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du projet{% endblock %}
+
+{% block body %}
+<main class="container">
+
+    <h1>Modification du projet</h1>
+
+    {{ include('admin_project/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('admin_project_index') }}"class="btn btn-outline-dark mb-5 align-self-end">Retour</a>
+
+    </main>
+{% endblock %}

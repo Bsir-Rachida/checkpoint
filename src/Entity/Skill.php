@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\SkillRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,14 +22,28 @@ class Skill
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=LevelSkill::class, inversedBy="level")
+     * @Assert\NotBlank
      */
-    private $level;
+    private $levelSkill;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="skill")
+     */
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -37,22 +54,51 @@ class Skill
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getLevel(): ?int
+    public function getLevelSkill(): ?LevelSkill
     {
-        return $this->level;
+        return $this->levelSkill;
     }
 
-    public function setLevel(int $level): self
+    public function setLevelSkill(?LevelSkill $levelSkill): self
     {
-        $this->level = $level;
+        $this->levelSkill = $levelSkill;
 
         return $this;
     }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addSkill($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeSkill($this);
+        }
+
+        return $this;
+    }
+
+
 }

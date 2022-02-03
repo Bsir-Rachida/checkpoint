@@ -4,57 +4,25 @@ namespace App\DataFixtures;
 
 use App\Entity\Skill;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class SkillFixtures extends Fixture
+class SkillFixtures extends Fixture 
 {
     const SKILLS = [
-        [
-            'name' => 'HTML',
-            'level' => 80,
-
-        ],
-        [
-            'name' => 'CSS',
-            'level' => 60,
-
-        ],
-        [
-            'name' => 'TWIG',
-            'level' => 70,
-
-        ],
-        [
-            'name' => 'PHP',
-            'level' => 70,
-
-        ],
-        [
-            'name' => 'SYMFONY',
-            'level' => 70,
-
-        ],
-        [
-            'name' => 'FIGMA',
-            'level' => 75,
-
-        ],
-        [
-            'name' => 'MYSQL',
-            'level' => 70,
-
-        ],
-    ];
+         'HTML','CSS','TWIG','PHP','SYMFONY','FIGMA','MYSQL',];
 
     public function load(ObjectManager $manager): void
     {
-        for ($i = 0; $i < 7; $i++) {
-            $project = new Skill();
-            $project->setName(self::SKILLS[$i]['name']);
-            $project->setLevel(self::SKILLS[$i]['level']);
-            $manager->persist($project);
+        foreach (self::SKILLS as $key => $skillName) {
+            $skill = new Skill();
+            $skill->setName($skillName);
+            $skill->setLevelSkill($this->getReference('level_' . ($key)));
+            $manager->persist($skill);
+            $this->addReference('skill_' . $key, $skill);
         }
 
         $manager->flush();
     }
+  
 }

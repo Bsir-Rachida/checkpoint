@@ -1,24 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réalisations{% endblock %}
+{% block title %}Réalisations
+{% endblock %}
 
 {% block body %}
-<div class="container ">
-<h1 class= "project text-center mt-4"> MES  REALISATIONS  </h1>
-<hr class="ms-5 w-80">
-<div class="row">
-		{% for project in projects %}
-		<div class="col-6 mt-4 ">
-			<a href="">
-              <figure class="figure">
-				<img src="{{ vich_uploader_asset(project) }}" class="figure-img img-fluid rounded ps-5 mt-2 card-project "
-					alt="{{ project.name}}" />
-                    
-                    </figure>
-			</a>
-		</div>
-		{% endfor %}
+	<div class="container ">
+		<h1 class="project text-center mt-4">
+			MES  REALISATIONS
+		</h1>
+		<hr class="ms-5 w-80">
+		<nav class="navbar navbar-light bg-light">
+			<form class="container-fluid justify-content-center">
+				<a class="btn btn-primary me-4 rounded-0" href="">TOUS</a>
+				<a class="btn btn-primary me-4 rounded-0" type="button">HTML</a>
+				<a class="btn btn-primary me-4 rounded-0" type="button">PHP</a>
+				<a class="btn btn-primary me-4 rounded-0" type="button">SYMFONY</a>
 
-</div>
+			</form>
+		</nav>
+		<div class="row d-flex ">
+			{% for project in projects %}
+
+
+				<div class="row row-cols-1 row-cols-md-2 g-2 justify-content-center">
+
+					<div class="col ">
+
+						<div class="card bg-dark card-project mb-5 ">
+							<p class="text-center text-light fs-2">{{ project.name }}</p>
+							<a href="{{ project.url }}">
+								<img src="{{ vich_uploader_asset(project) }}" class="figure-img img-fluid  " alt="{{ project.name}}"/>
+							</a>
+							<div class="card-body">
+
+								<h3 class="fw-bold">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar2-check-fill me-3" viewbox="0 0 16 16">
+										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zm-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+									</svg>
+									{{ project.date|format_datetime('medium', 'none') }}
+								</h3>
+								<p class="card-text text-light ">{{ project.description }}</p>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+			{% endfor %}
+
+		</div>
+	</div>
 
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réalisations
+{% endblock %}
+
+{% block body %}
+	<div class="container ">
+		<h1 class="project text-center mt-4">
+			MES  REALISATIONS
+		</h1>
+		<hr class="ms-5 w-80">
+		<nav class="navbar navbar-light bg-light">
+			<form class="container-fluid justify-content-center">
+				<a class="btn btn-primary me-4 rounded-0" href="">TOUS</a>
+				<a class="btn btn-primary me-4 rounded-0" type="button">HTML</a>
+				<a class="btn btn-primary me-4 rounded-0" type="button">PHP</a>
+				<a class="btn btn-primary me-4 rounded-0" type="button">SYMFONY</a>
+
+			</form>
+		</nav>
+		<div class="row d-flex ">
+			{% for project in skill.projects %}
+
+
+				{{project.name}}
+
+			{% endfor %}
+
+		</div>
+	</div>
+
+{% endblock %}

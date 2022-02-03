@@ -15,6 +15,7 @@ Encore
     //.setManifestKeyPrefix('build/')
     .copyFiles({
         from: './assets/images',
+        from: './assets/documents',
 
         // optional target path, relative to the output dir
         // to: 'images/[path][name].[ext]',

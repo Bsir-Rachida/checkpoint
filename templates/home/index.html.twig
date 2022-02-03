@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block body %}
-	<div class=" home p-5  ">
-		<div class=" col-8 d-flex align-items-start flex-column mt-5" style="height: 600px;">
+	<main class=" home p-5  ">
+		<div class="container">
+			<div class=" col-8 d-flex align-items-start flex-column mt-5">
 
-			<h1 class="mt-auto p-2 bd-highlight">A propos de moi</h1>
-			<h2 class="mt-2">Développeuse web et mobile</h2>
-			<p class="mt-2 lh-lg">Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
-			<a class="btn btn-primary align-self-end mx-5 mt-5  "  href="{{ path('project') }}">en savoir plus</a>
+				<h1 class="mt-auto p-2 bd-highlight h1-home ">A propos de moi</h1>
+				<h2 class="mt-2 h2-home ">Développeuse web et mobile</h2>
+				<p class="mt-2 lh-lg p-home">Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+				<a class="btn btn-primary align-self-end mx-5 mt-5  " href="{{ path('project') }}">en savoir plus</a>
+			</div>
 		</div>
-
 	</div>
-</div>{% endblock %}
+</main>{% endblock %}
